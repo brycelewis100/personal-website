@@ -18,17 +18,18 @@ export function FinancePieChart({
         { name: 'invest', value: invest, color: '#2daeea' },
     ];
 
-    const RADIAN = Math.PI / 180;
-
     return (
         <ResponsiveContainer width="100%" height="100%">
-            <PieChart margin={{ top: 1, bottom: 1 }}>
+            <PieChart margin={{ top: 80, bottom: 80 }}>
                 <Pie
                     {...pieProps}
                     data={chartData}
                     dataKey="value"
                     // label={renderCustomizedLabel}
                     paddingAngle={5}
+                    label={(a) => {
+                        return a.tooltipPayload?.[0]?.name;
+                    }}
                     // startAngle={180}
                     // endAngle={0}
                 >

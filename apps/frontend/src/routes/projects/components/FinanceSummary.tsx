@@ -25,8 +25,8 @@ export function FinanceSummary() {
     );
 
     return (
-        <div className="border rounded-md p-4 flex justify-between">
-            <div className="h-60 w-60 ">
+        <div className="border rounded-md p-4 flex justify-between items-center">
+            <div className="h-[20rem] w-[20rem] ">
                 <FinancePieChart
                     guiltFree={guiltFreeSpending}
                     fixed={fixedTotal}
@@ -34,7 +34,8 @@ export function FinanceSummary() {
                     savings={savingsTotal}
                 />
             </div>
-            <div>
+
+            <div className="pr-16">
                 <div>Guilt Free Spending</div>
                 <div className="text-xl">
                     {formatMoney({ amount: incomeTotal - fixedTotal - investTotal - savingsTotal })}
