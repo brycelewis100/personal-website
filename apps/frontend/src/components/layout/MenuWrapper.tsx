@@ -4,10 +4,12 @@ import { GlobalErrorBoundary } from '../errors/GlobalErrorBoundary';
 
 export function MenuWrapper() {
     return (
-        <div className="relative">
+        <div className="relative h-full">
             <Header />
             <GlobalErrorBoundary>
-                <Outlet />
+                <div className="h-full">
+                    <Outlet />
+                </div>
             </GlobalErrorBoundary>
         </div>
     );

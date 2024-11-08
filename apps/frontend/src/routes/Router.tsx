@@ -4,6 +4,7 @@ import React from 'react';
 
 const About = React.lazy(() => import('./about/route'));
 const Projects = React.lazy(() => import('./projects/route'));
+
 const Contact = React.lazy(() => import('./contact/route'));
 const Photography = React.lazy(() => import('./photography/route'));
 
