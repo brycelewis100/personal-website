@@ -5,10 +5,11 @@ import { TableCell } from '../../../components/common/tables/TableCell';
 import { TableHead } from '../../../components/common/tables/TableHead';
 import { TableHeaderCell } from '../../../components/common/tables/TableHeaderCell';
 import { TableRow } from '../../../components/common/tables/TableRow';
-import { Detail, FormType } from '../route';
+import { FormType } from '../route';
 import { SelectInput } from '../../../components/common/form/SelectInput';
 import { calculateDetailTotal } from '../util';
 import { formatMoney } from '../../../components/common/util/money';
+import { Detail } from '../../../modules/finance/slice';
 
 export function FinanceSectionTable({ name }: { name: keyof FormType }) {
     const form = useFormContext<FormType>();

@@ -4,12 +4,8 @@ import { useForm } from 'react-hook-form';
 import { FinanceSectionHeader } from './components/FinanceSectionHeader';
 import { FinanceSectionTable } from './components/FinanceSectionTable';
 import { FinanceSummary } from './components/FinanceSummary';
-
-export type Detail = {
-    category: string;
-    amount: number;
-    period: 'paycheck' | 'monthly';
-};
+import { Detail, getCurrentFinanceForm, saveFinanceForm } from '../../modules/finance/slice';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 export type FormType = {
     income: Detail[];
@@ -19,7 +15,17 @@ export type FormType = {
 };
 
 export default function Projects() {
-    const form = useForm<FormType>();
+    const loadedFormData = useAppSelector(getCurrentFinanceForm);
+
+    const form = useForm<FormType>({
+        defaultValues: loadedFormData,
+    });
+    const dispatch = useAppDispatch();
+
+    const onSave = (data: FormType) => {
+        console.log(data);
+        dispatch(saveFinanceForm({ data }));
+    };
     return (
         <PageSection>
             <RhfFormProvider {...form} className="pt-24">
@@ -35,7 +41,7 @@ export default function Projects() {
                 <FinanceSectionHeader header="Savings" name="savings" />
                 <FinanceSectionTable name="savings" />
 
-                <FinanceSummary />
+                <FinanceSummary onSave={onSave} />
             </RhfFormProvider>
         </PageSection>
     );

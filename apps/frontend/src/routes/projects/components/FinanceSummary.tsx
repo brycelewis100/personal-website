@@ -4,8 +4,10 @@ import { calculateSectionTotal } from '../util';
 import { useMemo } from 'react';
 import { formatMoney } from '../../../components/common/util/money';
 import { FinancePieChart } from './FinancePieChart';
+import { Button } from '../../../components/common/buttons/Button';
+import { useAppDispatch } from '../../../hooks';
 
-export function FinanceSummary() {
+export function FinanceSummary({ onSave }: { onSave: (data: FormType) => void }) {
     const form = useFormContext<FormType>();
     const { control } = form;
 
@@ -40,6 +42,7 @@ export function FinanceSummary() {
                 <div className="text-xl">
                     {formatMoney({ amount: incomeTotal - fixedTotal - investTotal - savingsTotal })}
                 </div>
+                <Button onClick={form.handleSubmit(onSave)}>Save</Button>
             </div>
         </div>
     );
